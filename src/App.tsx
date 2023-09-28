@@ -1,10 +1,9 @@
 import "./App.css";
 
-const App = () => 
-  (
+const App = () => (
   <div>
     <h1>Vite + React</h1>
   </div>
-  )
+);
 
 export default App;
