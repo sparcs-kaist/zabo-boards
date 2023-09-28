@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+    },
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false, //do not allow import of js files
+     "skipLibCheck": true,
+     "esModuleInterop": false, // allow mix of commonjs and es modules
+    "allowSyntheticDefaultImports": true, // even though it is not export default XXX, it allows to import XXX.
+    "allowImportingTsExtensions": true,
+
+    // Linting
+    "strict": true, //strict type checking 
+    "forceConsistentCasingInFileNames": true, // enforce consistent casing in file names
+
+    // Modules
+    "module": "ESNext", // which module system to use after compilation
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true, //force every file to be a module
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+  },
+  "include": ["src", "vite.config.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
