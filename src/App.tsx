@@ -1,9 +1,5 @@
-import "./App.css";
+import { Board } from "@/components";
 
-const App = () => (
-  <div>
-    <h1>Vite + React</h1>
-  </div>
-);
+const App = () => <Board />;
 
 export default App;
