@@ -43,7 +43,15 @@
 }
 
 .qrCode {
-
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  p{
+    color: #F9F9F9;
+    align-self: flex-end;
+    font-size: 60px;
+    font-weight: 400;
+  }
 }
 
 .background {
@@ -73,4 +81,118 @@
     background-position: center;
     background-size: cover;
   }
+}
+
+.zabo {
+  width: 1354px;
+  height: 1896px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 60px;
+
+    //optimization for css animation
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering:   -o-crisp-edges;          /* Opera   */
+    image-rendering: -webkit-optimize-contrast; /* Webkit  */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;   /* IE      */
+
+    will-change: transform; // will consume additional memory
+  }
+}
+
+.zabo.current {
+    left: 1731px;
+
+    //transition animation
+    animation-duration: 3s;
+    animation-name: fadeout;
+    animation-iteration-count: infinite;
+
+}
+.zabo.next {
+    left: 3145px;
+    img {
+      opacity: 0.5;
+    }
+
+    //transition animation
+    animation-duration: 3s;
+    animation-name: zaboMoveToCurrent;
+    animation-iteration-count: infinite;
+
+}
+
+.zabo.next2 {
+  left: 4559px;
+  img {
+    opacity: 0.5;
+  }
+
+   //transition animation
+    animation-duration: 3s;
+    animation-name: zaboMoveToNext;
+    animation-iteration-count: infinite;
+}
+
+// Animation for the transition
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zaboMoveToCurrent {
+  0% {
+    left: 3145px;
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 1731px;
+    opacity: 1;
+  }
+}
+
+@keyframes zaboMoveToNext {
+  0% {
+    left: 4559px;
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 3145px;
+    opacity: 0.5;
+  }
+
+}
+
+@keyframes changeText {
+
+}
+
+@keyframes changeBackground {
+
+}
+
+@keyframes changeQRCode {
+
 }
