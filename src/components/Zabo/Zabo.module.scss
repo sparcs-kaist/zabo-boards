@@ -9,9 +9,6 @@
   padding-block: 132px;
   padding-left: 216px;
 
-  //background-color: black;
-
-
   section {
     display: flex;
     flex-direction: column;
@@ -90,6 +87,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  // content position follows css animation. css animation may change the position value.
+  left: 3840px;
+  animation-fill-mode: forwards;
 
   img {
     width: 100%;
@@ -107,92 +107,102 @@
   }
 }
 
-.zabo.current {
-    left: 1731px;
 
+.no_animation {
     //transition animation
     animation-duration: 3s;
-    animation-name: fadeout;
-    animation-iteration-count: infinite;
-
+    animation-name: no_animation;
 }
-.zabo.next {
-    left: 3145px;
-    img {
-      opacity: 0.5;
+
+.fadein_info {
+     //transition animation
+     animation-duration: 3s;
+     animation-name: fadein_info;
+}
+
+.fadeout_info {
+    //transition animation
+    animation-duration: 3s;
+    animation-name: fadeout_info;
+}
+
+.fadein_zabo_to_current {
+    //transition animation
+    animation-duration: 3s;
+    animation-name: fadein_zabo_to_current;
+}
+
+.fadein_zabo_to_before {
+    //transition animation
+    animation-duration: 3s;
+    animation-name: fadein_zabo_to_before;
+}
+
+.fadeout_zabo_current {
+    //transition animation
+    animation-duration: 3s;
+    animation-name: fadeout_zabo_current;
+}
+
+@keyframes no_animation {
+    0% {
+
+    } 
+
+    100% {
+
     }
-
-    //transition animation
-    animation-duration: 3s;
-    animation-name: zaboMoveToCurrent;
-    animation-iteration-count: infinite;
-
-}
-
-.zabo.next2 {
-  left: 4559px;
-  img {
-    opacity: 0.5;
-  }
-
-   //transition animation
-    animation-duration: 3s;
-    animation-name: zaboMoveToNext;
-    animation-iteration-count: infinite;
 }
 
 // Animation for the transition
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+@keyframes fadein_info {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeout_info {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+@keyframes fadein_zabo_to_current {
+    0% {
+        left: 3145px;
+        opacity: 0.5;
+    }
+    100% {
+        left: 1731px;
+        opacity: 1;
+    }
 }
 
-@keyframes zaboMoveToCurrent {
-  0% {
-    left: 3145px;
-    opacity: 0.5;
-  }
+@keyframes fadein_zabo_to_before {
+    0% {
+        left: 4559px;
+        opacity: 0.5;
+    }
 
-  100% {
-    left: 1731px;
-    opacity: 1;
-  }
+    100% {
+        left: 3145px;
+        opacity: 0.5;
+    }
 }
 
-@keyframes zaboMoveToNext {
-  0% {
-    left: 4559px;
-    opacity: 0.5;
-  }
+@keyframes fadeout_zabo_current {
+    0% {
+        opacity: 1;
+    }
 
-  100% {
-    left: 3145px;
-    opacity: 0.5;
-  }
-
-}
-
-@keyframes changeText {
-
-}
-
-@keyframes changeBackground {
-
-}
-
-@keyframes changeQRCode {
-
+    100% {
+        opacity: 0;
+    }
 }
