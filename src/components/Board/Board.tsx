@@ -1,28 +1,25 @@
-import React, { useState } from "react";
-import { Zabo, ZaboState } from "@/components/Zabo";
+import React, { useEffect } from "react";
+import type { ZaboListState } from "@/redux/zabos/zaboSlice";
+import { fetchZaboThunk } from "@/redux/zabos/fetchZaboThunk";
+import { useAppSelector, useAppDispatch } from "@/hooks";
 import style from "./Board.module.scss";
 
 export const Board = () => {
-  // which zabo should be shown in the zaboQueue
-  // const [showIdx, setShowIdx] = useState(0);
+  const zaboList = useAppSelector((state: ZaboListState) => state.zaboList);
+  const leftoverLength = useAppSelector(
+    (state: ZaboListState) => state.leftoverLength,
+  );
+  console.log(`zaboList: ${zaboList}, leftoverLength: ${leftoverLength}`);
 
-  const [testState, setTestState] = useState(ZaboState.PENDING_STATE);
+  const dispatch = useAppDispatch();
 
-  // change testState after 2 seconds
-  setTimeout(() => {
-    setTestState(ZaboState.BEFORE_STATE);
-  }, 2000);
+  useEffect(() => {
+    dispatch(fetchZaboThunk());
+  }, []);
 
   return (
     <main className={style.board}>
-      <Zabo
-        title="zabo"
-        description="zabo-description"
-        date="2023.10.11"
-        qrUrl="https://zabo.sparcs.org/s/86f104"
-        imageUrl="https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421694355488272"
-        state={testState}
-      />
+      <div>Hello World!</div>
     </main>
   );
 };

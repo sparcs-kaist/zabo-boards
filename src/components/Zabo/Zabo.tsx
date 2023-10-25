@@ -73,7 +73,7 @@ export const Zabo = (zaboJson: ZaboJson) => {
           </div>
         </div>
       </section>
-      <div className={style.background}>
+      <div className={`${style.background} ${infoAnimationTrigger}`}>
         <main />
         <div style={{ backgroundImage: `url(${imageUrl})` }} />
       </div>
