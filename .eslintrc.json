@@ -100,7 +100,8 @@
       {
         "prefer": "type-imports"
       }
-    ]
+    ],
+    "arrow-body-style": ["warn"]
   },
   "settings": {
     "import/parsers": {

@@ -1,7 +1,8 @@
 import { ZaboState } from "@/components/Zabo";
+import type { AppDispatch } from "@/redux/store";
 import { pushZabos } from "./zaboSlice";
 
-export const fetchZaboThunk = () => async dispatch => {
+export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   await fetch("http://localhost:5175");
 
   dispatch(
