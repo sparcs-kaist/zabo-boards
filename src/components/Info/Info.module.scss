@@ -1,0 +1,22 @@
+@import "src/styles";
+
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    color: black;
+    position: absolute;
+    left: 100px;
+    top: 300px;
+  
+    h1 {
+      font-size: 140px;
+      font-weight: 900;
+    }
+  
+    p {
+      font-size: 80px;
+      font-weight: 400;
+    }
+  }

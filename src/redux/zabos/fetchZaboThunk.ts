@@ -1,5 +1,5 @@
-import { ZaboState } from "@/components/Zabo";
 import type { AppDispatch } from "@/redux/store";
+import { ZaboState } from "@/types";
 import { pushZabos } from "./zaboSlice";
 
 export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {

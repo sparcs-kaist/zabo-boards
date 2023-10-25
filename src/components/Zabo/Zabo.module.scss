@@ -1,101 +1,19 @@
 @import "src/styles";
 
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-
-  padding-block: 132px;
-  padding-left: 216px;
-
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-  }
-}
-
-.info {
-
-}
-
-
-.text {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  color: $white;
-
-  h1 {
-    font-size: 140px;
-    font-weight: 900;
-  }
-
-  p {
-    font-size: 80px;
-    font-weight: 400;
-  }
-}
-
-.qrCode {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  p{
-    color: #F9F9F9;
-    align-self: flex-end;
-    font-size: 60px;
-    font-weight: 400;
-  }
-}
-
-.background {
-  z-index: -1;
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  animation-fill-mode: forwards;
-
-  main, div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  main {
-    z-index: 0;
-    background: linear-gradient(0deg, rgba(0, 2, 15, 0.40) 0%, rgba(0, 2, 15, 0.40) 100%), radial-gradient(169.2% 55.43% at 63.35% 53.43%, rgba(50, 57, 96, 0.25) 9.89%, rgba(52, 60, 103, 0.75) 100%);
-    backdrop-filter: blur(125px);
-  }
-
-  div {
-    z-index: -1;
-    background-position: center;
-    background-size: cover;
-  }
-}
-
 .zabo {
   width: 1354px;
-  height: 1896px;
+  height: 100%;
   position: absolute;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
-  // content position follows css animation. css animation may change the position value.
-  left: 3840px;
+
+  // content position follows animation
   animation-fill-mode: forwards;
 
   img {
-    width: 100%;
+    width: 1354px;
     height: auto;
     border-radius: 60px;
 
@@ -108,102 +26,5 @@
 
     will-change: transform; // will consume additional memory
   }
-}
 
-
-.no_animation {
-    //transition animation
-    animation-duration: 3s;
-    animation-name: no_animation;
-}
-
-.fadein_info {
-     //transition animation
-     animation-duration: 3s;
-     animation-name: fadein_info;
-}
-
-.fadeout_info {
-    //transition animation
-    animation-duration: 3s;
-    animation-name: fadeout_info;
-}
-
-.fadein_zabo_to_current {
-    //transition animation
-    animation-duration: 3s;
-    animation-name: fadein_zabo_to_current;
-}
-
-.fadein_zabo_to_before {
-    //transition animation
-    animation-duration: 3s;
-    animation-name: fadein_zabo_to_before;
-}
-
-.fadeout_zabo_current {
-    //transition animation
-    animation-duration: 3s;
-    animation-name: fadeout_zabo_current;
-}
-
-@keyframes no_animation {
-    0% {
-    } 
-
-    100% {
-    }
-}
-
-// Animation for the transition
-@keyframes fadein_info {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fadeout_info {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes fadein_zabo_to_current {
-    0% {
-        left: 3145px;
-        opacity: 0.5;
-    }
-    100% {
-        left: 1731px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadein_zabo_to_before {
-    0% {
-        left: 4559px;
-        opacity: 0;
-    }
-
-    100% {
-        left: 3145px;
-        opacity: 0.5;
-    }
-}
-
-@keyframes fadeout_zabo_current {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
 }

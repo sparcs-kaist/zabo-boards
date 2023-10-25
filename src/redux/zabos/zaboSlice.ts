@@ -1,5 +1,4 @@
-import type { ZaboJson } from "@/components/Zabo";
-import { ZaboState } from "@/components/Zabo";
+import { type ZaboJson, ZaboState } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface ZaboListState {
@@ -10,8 +9,8 @@ export interface ZaboListState {
 const initialState: ZaboListState = {
   zaboList: [
     {
-      title: "ZABOZABO",
-      description: "ZABOZABO",
+      title: "1111111111",
+      description: "Z111111111",
       date: "SOON",
       imageUrl:
         "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471",
@@ -19,8 +18,8 @@ const initialState: ZaboListState = {
       state: ZaboState.CURRENT_STATE,
     },
     {
-      title: "ZABOZABO",
-      description: "ZABOZABO",
+      title: "2222222222",
+      description: "Z2222222",
       date: "SOON",
       imageUrl:
         "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471",

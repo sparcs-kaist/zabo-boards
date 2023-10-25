@@ -1,0 +1,16 @@
+.qr {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+
+    position: absolute;
+    left: 100px;
+    top: 1000px;
+
+    p{
+      color: #F9F9F9;
+      align-self: flex-end;
+      font-size: 60px;
+      font-weight: 400;
+    }
+  }

@@ -1,86 +1,36 @@
-import React, { useEffect, useState } from "react";
-import QRCode from "react-qr-code";
+import React, { useEffect } from "react";
+import { useSpring, animated } from "@react-spring/web";
+import { type ZaboProps, ZaboState } from "@/types";
+import {
+  zaboFadeOut,
+  zaboMoveToBefore,
+  zaboMoveToCurrent,
+} from "./Zabo.animation";
 import style from "./Zabo.module.scss";
-import { ZaboState } from "./state";
 
-export type ZaboJson = {
-  title: string;
-  description: string;
-  date: string;
-  qrUrl: string;
-  imageUrl: string;
-  // css animation starts if trigger is set to true
-  state: ZaboState;
-};
+export const Zabo = (zaboProps: ZaboProps) => {
+  const { title, imageUrl, state } = zaboProps;
+  const [springs, api] = useSpring(() => ({
+    from: {
+      x: 4559,
+      opacity: 1,
+    },
+  }));
 
-export const Zabo = (zaboJson: ZaboJson) => {
-  const { title, description, date, qrUrl, imageUrl, state } = zaboJson;
-  console.log(
-    `title: ${title}, description: ${description}, date: ${date}, qrUrl: ${qrUrl}, imageUrl: ${imageUrl}, state: ${state}`,
-  );
-
-  const [infoAnimationTrigger, setInfoAnimationTrigger] = useState(
-    style.no_animation,
-  );
-  const [zaboAnimationTrigger, setZaboAnimationTrigger] = useState(
-    style.no_animation,
-  );
-
-  // if the state changes, we have to trigger the css animation
   useEffect(() => {
-    // if the state changes from PENDING to BEFORE
+    // as zabo state change, we need to do some animations
     if (state === ZaboState.BEFORE_STATE) {
-      // trigger css animation that moves zabo into ready position
-      console.log(`STATE changed from PENDING to BEFORE`);
-      setZaboAnimationTrigger(style.fadein_zabo_to_before);
+      api.start(zaboMoveToBefore);
     } else if (state === ZaboState.CURRENT_STATE) {
-      console.log(`STATE changed from BEFORE to CURRENT`);
-      setZaboAnimationTrigger(style.fadein_zabo_to_current);
-      setInfoAnimationTrigger(style.fadein_info);
+      api.start(zaboMoveToCurrent);
     } else if (state === ZaboState.SHOWN_STATE) {
-      console.log(`STATE changed from CURRENT to SHOWN`);
-      setZaboAnimationTrigger(style.fadeout_zabo_current);
-      setInfoAnimationTrigger(style.fadeout_info);
+      api.start(zaboFadeOut);
     }
   }, [state]);
 
   return (
-    <main className={style.container}>
-      <section>
-        <header>Zabo Boards</header>
-
-        <div>
-          <div className={`${style.info} ${infoAnimationTrigger}`}>
-            <div className={style.text}>
-              <h1>title</h1>
-              <p>description</p>
-            </div>
-            <div>date</div>
-          </div>
-          <div className={style.qrCode}>
-            <QRCode
-              value={qrUrl}
-              size={300}
-              bgColor="transparent"
-              fgColor="#D2D3D7"
-              level="H"
-            />
-            <p>
-              Zabo에서
-              <br />
-              상세 정보 확인하기
-            </p>
-          </div>
-        </div>
-      </section>
-      <div className={`${style.background} ${infoAnimationTrigger}`}>
-        <main />
-        <div style={{ backgroundImage: `url(${imageUrl})` }} />
-      </div>
-
-      <div className={`${style.zabo} ${zaboAnimationTrigger}`}>
-        <img src={imageUrl} alt={title} />
-      </div>
-    </main>
+    <animated.div className={style.zabo} style={{ ...springs }}>
+      <img src={imageUrl} alt={title} />
+    </animated.div>
   );
 };
