@@ -6,6 +6,5 @@ export type ZaboJson = {
   date: string;
   qrUrl: string;
   imageUrl: string;
-  // css animation starts if trigger is set to true
   state: ZaboState;
 };

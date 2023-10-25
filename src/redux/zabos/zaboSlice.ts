@@ -13,7 +13,7 @@ const initialState: ZaboListState = {
       description: "Z111111111",
       date: "SOON",
       imageUrl:
-        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471",
+        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
       qrUrl: "https://zabo.sparcs.org/s/86f104",
       state: ZaboState.CURRENT_STATE,
     },
@@ -22,7 +22,7 @@ const initialState: ZaboListState = {
       description: "Z2222222",
       date: "SOON",
       imageUrl:
-        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471",
+        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1wef3gfwe",
       qrUrl: "https://zabo.sparcs.org/s/86f104",
       state: ZaboState.BEFORE_STATE,
     },
@@ -36,7 +36,7 @@ const zaboSlice = createSlice({
   reducers: {
     pushZabos: (state, action) => {
       // if there are plenty of leftover zabos, we do not dispatch
-      if (state.leftoverLength > 50) {
+      if (state.leftoverLength > 200) {
         return;
       }
 
