@@ -1,9 +1,11 @@
+import { AnimationDuration } from "@/config";
+
 export const qrFadeIn = {
   to: {
     opacity: 1,
   },
   config: {
-    duration: 1500,
+    duration: AnimationDuration,
   },
 };
 
@@ -12,6 +14,6 @@ export const qrFadeOut = {
     opacity: 0,
   },
   config: {
-    duration: 1500,
+    duration: AnimationDuration,
   },
 };

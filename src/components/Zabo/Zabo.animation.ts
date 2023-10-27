@@ -1,10 +1,12 @@
+import { AnimationDuration } from "@/config";
+
 export const zaboMoveToBefore = {
   to: {
     x: 3145,
     opacity: 1,
   },
   config: {
-    duration: 1800,
+    duration: AnimationDuration,
   },
 };
 
@@ -14,7 +16,7 @@ export const zaboMoveToCurrent = {
     opacity: 1,
   },
   config: {
-    duration: 1500,
+    duration: AnimationDuration,
   },
 };
 
@@ -24,6 +26,6 @@ export const zaboFadeOut = {
     x: 1731,
   },
   config: {
-    duration: 1500,
+    duration: AnimationDuration,
   },
 };

@@ -4,19 +4,34 @@
 .text {
     display: flex;
     flex-direction: column;
-    gap: 28px;
     color: $white;
     position: absolute;
-    left: 100px;
-    top: 300px;
+    bottom: 861px;
+    left: 216px;
+
   
     h1 {
       font-size: 140px;
       font-weight: 900;
+      margin-bottom: 28px;
     }
   
-    p {
+    .description {
       font-size: 80px;
       font-weight: 400;
+      opacity: 0.6;
+      margin-bottom: 126px;
+
+    }
+
+    .date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 69px;
+      p {
+        font-size: 138px;
+        font-weight: 900;
+      }
     }
   }

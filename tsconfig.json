@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
     },
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false, //do not allow import of js files

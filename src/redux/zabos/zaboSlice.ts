@@ -11,7 +11,7 @@ const initialState: ZaboListState = {
     {
       title: "1111111111",
       description: "Z111111111",
-      date: "SOON",
+      date: "08.03",
       imageUrl:
         "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
       qrUrl: "https://zabo.sparcs.org/s/86f104",
@@ -20,7 +20,7 @@ const initialState: ZaboListState = {
     {
       title: "2222222222",
       description: "Z2222222",
-      date: "SOON",
+      date: "08.03",
       imageUrl:
         "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1wef3gfwe",
       qrUrl: "https://zabo.sparcs.org/s/86f104",

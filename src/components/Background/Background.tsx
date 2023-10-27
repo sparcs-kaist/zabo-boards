@@ -1,5 +1,5 @@
 import { type BackgroundProps, ZaboState } from "@/types";
-import { animated, useSpring } from "@react-spring/web";
+import { animated, useSpring, easings } from "@react-spring/web";
 import { useEffect } from "react";
 import { backgroundFadeIn, backgroundFadeOut } from "./Background.animation";
 import style from "./Background.module.scss";
@@ -10,6 +10,9 @@ export const Background = (backgroundProps: BackgroundProps) => {
   const [springs, api] = useSpring(() => ({
     from: {
       opacity: 0,
+    },
+    config: {
+      easings: easings.easeInOutSine,
     },
   }));
 
