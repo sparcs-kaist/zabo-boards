@@ -3,8 +3,6 @@ import { ZaboState } from "@/types";
 import { pushZabos } from "./zaboSlice";
 
 export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
-  await fetch("http://localhost:5173");
-
   const currentDate = new Date();
   const timestamp = currentDate.getTime();
 
