@@ -1,9 +1,11 @@
-import "./App.css";
+import { Board } from "@/components";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const App = () => (
-  <div>
-    <h1>Vite + React</h1>
-  </div>
+  <Provider store={store}>
+    <Board />
+  </Provider>
 );
 
 export default App;

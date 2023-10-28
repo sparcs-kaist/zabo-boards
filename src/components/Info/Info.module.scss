@@ -1,0 +1,37 @@
+@import "src/styles";
+
+
+.text {
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    position: absolute;
+    bottom: 861px;
+    left: 216px;
+
+  
+    h1 {
+      font-size: 140px;
+      font-weight: 900;
+      margin-bottom: 28px;
+    }
+  
+    .description {
+      font-size: 80px;
+      font-weight: 400;
+      opacity: 0.6;
+      margin-bottom: 126px;
+
+    }
+
+    .date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 69px;
+      p {
+        font-size: 138px;
+        font-weight: 900;
+      }
+    }
+  }

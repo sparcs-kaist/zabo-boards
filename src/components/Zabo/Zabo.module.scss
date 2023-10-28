@@ -1,0 +1,30 @@
+@import "src/styles";
+
+.zabo {
+  width: 1354px;
+  height: 100%;
+  position: absolute;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  // content position follows animation
+  animation-fill-mode: forwards;
+
+  img {
+    width: 1354px;
+    height: auto;
+    border-radius: 60px;
+
+    //optimization for css animation
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering:   -o-crisp-edges;          /* Opera   */
+    image-rendering: -webkit-optimize-contrast; /* Webkit  */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;   /* IE      */
+
+    will-change: transform; // will consume additional memory
+  }
+
+}
