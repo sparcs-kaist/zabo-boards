@@ -35,7 +35,7 @@ export const Board = () => {
     <main className={style.board}>
       <Logo />
       {zaboList.map((zabo: ZaboJson) => (
-        <div key={zabo.imageUrl}>
+        <div key={`${zabo.imageUrl}div`}>
           <Background
             key={`${zabo.imageUrl}back`}
             imageUrl={zabo.imageUrl}
@@ -44,8 +44,9 @@ export const Board = () => {
           <Info
             key={`${zabo.imageUrl}info`}
             title={zabo.title}
-            description={zabo.description}
-            date={zabo.date}
+            owner={zabo.owner}
+            scheduleDate={zabo.scheduleDate}
+            scheduleType={zabo.scheduleType}
             state={zabo.state}
           />
           <Qr

@@ -1,73 +1,87 @@
+import axios from "axios";
+import dayjs from "dayjs";
 import type { AppDispatch } from "@/redux/store";
-import { ZaboState } from "@/types";
+import { ZaboState, type ZaboJson } from "@/types";
+import { ZABO_SHARE_BASE_URL } from "@/config";
 import { pushZabos } from "./zaboSlice";
 
 export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
-  const currentDate = new Date();
-  const timestamp = currentDate.getTime();
+  // attach timestamp to image url to prevent browser cache
+  // this leads to animation crash
+  // also prevent duplicate keys of components
+  const timestamp = new Date().getTime();
+  const postFix = (idx: number) =>
+    "".concat("?t=", `${timestamp}`, "&idx=", `${idx}`);
 
-  dispatch(
-    pushZabos([
-      {
-        title: "33333333333",
-        description: "설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/86f104",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 10
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-      {
-        title: "444444444444",
-        description: "다음자보설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/86f104",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 22
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-      {
-        title: "555555555555",
-        description: "다음자보설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/17e13c",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 33
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-      {
-        title: "666666",
-        description: "다음자보설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/17e13c",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 44
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-      {
-        title: "777777777",
-        description: "다음자보설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/17e13c",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 55
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-      {
-        title: "888888",
-        description: "다음자보설명",
-        date: "08.03",
-        qrUrl: "https://zabo.sparcs.org/s/17e13c",
-        imageUrl: `https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=${
-          timestamp + 66
-        }`,
-        state: ZaboState.PENDING_STATE,
-      },
-    ]),
-  );
+  // fetch zabos from server
+  // single zabo list get api gets 20 zabos. so we will call it 5 times to fetch total 50 zabos
+  // we will circulate top 50 zabos
+  // important thing is that, we have to set lastSeen params to get zabos after lastSeen
+  // so we can not do 5 requests in parallel. it should be sequential
+  let zabosData: ZaboJson[] = [];
+  for (let i = 0; i < 1; i += 1) {
+    const lastFetched =
+      zabosData.length > 0 ? zabosData[zabosData.length - 1].id : null;
+
+    // fetch zabos based on lastSeen(lastFetched)
+    const { data } =
+      lastFetched === null
+        ? await axios.get("/api/zabo/list")
+        : await axios.get("/api/zabo/list", {
+            params: {
+              lastSeen: lastFetched,
+            },
+          });
+
+    // parse fetched zabos to ZaboJson
+    // remove unnecessary fields
+    // add state field
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    const parsedZabos = data.map((zabo: any, index: number) => {
+      const { title, description, likesCount, views, score, effectiveViews } =
+        zabo;
+      /* eslint-disable-next-line no-underscore-dangle */
+      const id = zabo._id;
+      const likes = likesCount;
+      const owner = zabo.owner.name;
+      const scheduleType =
+        zabo.schedules.length > 0 ? zabo.schedules[0].eventType : null;
+      const scheduleDate =
+        zabo.schedules.length > 0
+          ? dayjs(zabo.schedules[0].startAt).format("MM.DD")
+          : null;
+      const qrUrl = "".concat(
+        ZABO_SHARE_BASE_URL,
+        "/s/",
+        id.substring(id.length - 6),
+      );
+      const imageUrl =
+        zabo.photos.length > 0 ? zabo.photos[0].url + postFix(index) : null;
+      const state = ZaboState.PENDING_STATE;
+
+      return {
+        id,
+        title,
+        owner,
+        description,
+        scheduleType,
+        scheduleDate,
+        qrUrl,
+        imageUrl,
+        state,
+        likes,
+        views,
+        score,
+        effectiveViews,
+      };
+    });
+
+    zabosData = zabosData.concat(parsedZabos);
+  }
+
+  // we have to remove zabos that have no image url
+  zabosData = zabosData.filter((zabo: ZaboJson) => zabo.imageUrl !== null);
+  console.log(zabosData);
+
+  dispatch(pushZabos(zabosData));
 };

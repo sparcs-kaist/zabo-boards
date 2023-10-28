@@ -9,22 +9,36 @@ export interface ZaboListState {
 const initialState: ZaboListState = {
   zaboList: [
     {
-      title: "1111111111",
-      description: "Z111111111",
-      date: "08.03",
+      id: "0000000000000",
+      title: "ZABO BOARD 2023 LAUNCHING",
+      owner: "SPARCS",
+      description: "HELLO WORLD",
+      scheduleType: null,
+      scheduleDate: null,
+      qrUrl: "https://zabo.sparcs.org/s/86f104",
       imageUrl:
         "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
-      qrUrl: "https://zabo.sparcs.org/s/86f104",
       state: ZaboState.CURRENT_STATE,
+      score: 0,
+      views: 0,
+      effectiveViews: 0,
+      likes: 0,
     },
     {
-      title: "2222222222",
-      description: "Z2222222",
-      date: "08.03",
-      imageUrl:
-        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1wef3gfwe",
+      id: "11111111111",
+      title: "ZABO BOARD 2023 LAUNCHING",
+      owner: "SPARCS",
+      description: "HELLO WORLD",
+      scheduleType: null,
+      scheduleDate: null,
       qrUrl: "https://zabo.sparcs.org/s/86f104",
+      imageUrl:
+        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
       state: ZaboState.BEFORE_STATE,
+      score: 0,
+      views: 0,
+      effectiveViews: 0,
+      likes: 0,
     },
   ],
   leftoverLength: 0,
@@ -36,7 +50,7 @@ const zaboSlice = createSlice({
   reducers: {
     pushZabos: (state, action) => {
       // if there are plenty of leftover zabos, we do not dispatch
-      if (state.leftoverLength > 200) {
+      if (state.leftoverLength > 10) {
         return;
       }
 
@@ -60,7 +74,7 @@ const zaboSlice = createSlice({
       state.leftoverLength += newZaboListLength;
     },
     moveToNext: state => {
-      // if there are less than 1 leftover zabos, we do not dispatch
+      // if there are less than 2 leftover zabos, we do not dispatch
       if (state.leftoverLength < 1) {
         return;
       }
