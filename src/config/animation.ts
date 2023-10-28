@@ -1,2 +1,2 @@
-export const AnimationDuration = 2000;
-export const TransitionInterval = 4000;
+export const AnimationDuration = 3200;
+export const TransitionInterval = 10000;
