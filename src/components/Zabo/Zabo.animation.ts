@@ -1,4 +1,4 @@
-const AnimationDuration = import.meta.env.VITE_ANIMATION_DURATION;
+import { ANIMATION_DURATION } from "@/config";
 
 export const zaboMoveToBefore = {
   to: {
@@ -6,7 +6,7 @@ export const zaboMoveToBefore = {
     opacity: 0.5,
   },
   config: {
-    duration: AnimationDuration,
+    duration: ANIMATION_DURATION,
   },
 };
 
@@ -16,7 +16,7 @@ export const zaboMoveToCurrent = {
     opacity: 1,
   },
   config: {
-    duration: AnimationDuration,
+    duration: ANIMATION_DURATION,
   },
 };
 
@@ -26,6 +26,6 @@ export const zaboFadeOut = {
     x: 1731,
   },
   config: {
-    duration: AnimationDuration,
+    duration: ANIMATION_DURATION,
   },
 };

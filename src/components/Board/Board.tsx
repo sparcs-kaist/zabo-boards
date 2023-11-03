@@ -8,9 +8,8 @@ import { Info } from "@/components/Info";
 import { Background } from "@/components/Background";
 import { Qr } from "@/components/Qr";
 import { Logo } from "@/components/Logo";
+import { TRANSITION_INTERVAL } from "@/config";
 import style from "./Board.module.scss";
-
-const TransitionInterval = import.meta.env.VITE_TRANSITION_INTERVAL;
 
 export const Board = () => {
   const zaboList = useAppSelector((state: ZaboListState) => state.zaboList);
@@ -30,7 +29,7 @@ export const Board = () => {
     } else {
       dispatch(fetchZaboThunk());
     }
-  }, TransitionInterval);
+  }, TRANSITION_INTERVAL);
 
   return (
     <main className={style.board}>
