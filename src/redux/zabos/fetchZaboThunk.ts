@@ -4,7 +4,7 @@ import type { AppDispatch } from "@/redux/store";
 import { ZaboState, type ZaboJson } from "@/types";
 import { pushZabos } from "./zaboSlice";
 
-const ZABO_SHARE_URL = import.meta.env.VITE_ZABO_SHARE_URL;
+const ZABO_SHARE_URL = "".concat(import.meta.env.VITE_API_SERVER_URL, "s/");
 
 export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   // attach timestamp to image url to prevent browser cache
