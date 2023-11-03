@@ -8,8 +8,9 @@ import { Info } from "@/components/Info";
 import { Background } from "@/components/Background";
 import { Qr } from "@/components/Qr";
 import { Logo } from "@/components/Logo";
-import { TransitionInterval } from "@/config";
 import style from "./Board.module.scss";
+
+const TransitionInterval = import.meta.env.VITE_TRANSITION_INTERVAL;
 
 export const Board = () => {
   const zaboList = useAppSelector((state: ZaboListState) => state.zaboList);

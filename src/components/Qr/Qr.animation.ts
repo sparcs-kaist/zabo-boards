@@ -1,4 +1,4 @@
-import { AnimationDuration } from "@/config";
+const AnimationDuration = import.meta.env.VITE_ANIMATION_DURATION;
 
 export const qrFadeIn = {
   to: {

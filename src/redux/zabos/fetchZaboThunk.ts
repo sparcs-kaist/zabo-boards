@@ -2,8 +2,9 @@ import axios from "axios";
 import dayjs from "dayjs";
 import type { AppDispatch } from "@/redux/store";
 import { ZaboState, type ZaboJson } from "@/types";
-import { ZABO_SHARE_BASE_URL } from "@/config";
 import { pushZabos } from "./zaboSlice";
+
+const ZABO_SHARE_URL = import.meta.env.VITE_ZABO_SHARE_URL;
 
 export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   // attach timestamp to image url to prevent browser cache
@@ -19,7 +20,7 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   // important thing is that, we have to set lastSeen params to get zabos after lastSeen
   // so we can not do 5 requests in parallel. it should be sequential
   let zabosData: ZaboJson[] = [];
-  for (let i = 0; i < 1; i += 1) {
+  for (let i = 0; i < 5; i += 1) {
     const lastFetched =
       zabosData.length > 0 ? zabosData[zabosData.length - 1].id : null;
 
@@ -50,11 +51,7 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
         zabo.schedules.length > 0
           ? dayjs(zabo.schedules[0].startAt).format("MM.DD")
           : null;
-      const qrUrl = "".concat(
-        ZABO_SHARE_BASE_URL,
-        "/s/",
-        id.substring(id.length - 6),
-      );
+      const qrUrl = "".concat(ZABO_SHARE_URL, id.substring(id.length - 6));
       const imageUrl =
         zabo.photos.length > 0 ? zabo.photos[0].url + postFix(index) : null;
       const state = ZaboState.PENDING_STATE;
