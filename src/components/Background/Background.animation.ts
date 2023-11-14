@@ -1,11 +1,11 @@
-import { AnimationDuration } from "@/config";
+import { ANIMATION_DURATION } from "@/config";
 
 export const backgroundFadeIn = {
   to: {
     opacity: 1,
   },
   config: {
-    duration: AnimationDuration,
+    duration: ANIMATION_DURATION,
   },
 };
 
@@ -14,6 +14,6 @@ export const backgroundFadeOut = {
     opacity: 0,
   },
   config: {
-    duration: AnimationDuration,
+    duration: ANIMATION_DURATION,
   },
 };

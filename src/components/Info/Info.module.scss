@@ -3,20 +3,30 @@
 
 .text {
     display: flex;
+
     flex-direction: column;
     color: $white;
     position: absolute;
     bottom: 861px;
     left: 216px;
 
+
+
   
     h1 {
       font-size: 140px;
       font-weight: 900;
       margin-bottom: 28px;
+      width: 1323px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: keep-all;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3; /* number of lines to show */
     }
   
-    .description {
+    .owner {
       font-size: 80px;
       font-weight: 400;
       opacity: 0.6;

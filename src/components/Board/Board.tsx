@@ -8,7 +8,7 @@ import { Info } from "@/components/Info";
 import { Background } from "@/components/Background";
 import { Qr } from "@/components/Qr";
 import { Logo } from "@/components/Logo";
-import { TransitionInterval } from "@/config";
+import { TRANSITION_INTERVAL } from "@/config";
 import style from "./Board.module.scss";
 
 export const Board = () => {
@@ -29,13 +29,13 @@ export const Board = () => {
     } else {
       dispatch(fetchZaboThunk());
     }
-  }, TransitionInterval);
+  }, TRANSITION_INTERVAL);
 
   return (
     <main className={style.board}>
       <Logo />
       {zaboList.map((zabo: ZaboJson) => (
-        <div key={zabo.imageUrl}>
+        <div key={`${zabo.imageUrl}div`}>
           <Background
             key={`${zabo.imageUrl}back`}
             imageUrl={zabo.imageUrl}
@@ -44,8 +44,9 @@ export const Board = () => {
           <Info
             key={`${zabo.imageUrl}info`}
             title={zabo.title}
-            description={zabo.description}
-            date={zabo.date}
+            owner={zabo.owner}
+            scheduleDate={zabo.scheduleDate}
+            scheduleType={zabo.scheduleType}
             state={zabo.state}
           />
           <Qr
