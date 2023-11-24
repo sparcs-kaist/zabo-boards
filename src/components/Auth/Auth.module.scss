@@ -1,0 +1,41 @@
+@import "src/styles";
+
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 500px;
+}
+
+.modalContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    max-width: 1800px;
+}
+
+.modalTitle {
+    font-size: 100px;
+}
+
+.modalContent {
+    font-size: 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.input {
+    font-size: 50px;
+    margin: 10px;
+}
+
+.submit {
+    margin-top: 20px;
+    font-size: 50px;
+}
