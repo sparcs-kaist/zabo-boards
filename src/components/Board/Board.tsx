@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useInterval } from "@/hooks";
-import { moveToNext, type ZaboListState } from "@/redux/zabos/zaboSlice";
+import { moveToNext } from "@/redux/zabos/zaboSlice";
 import { fetchZaboThunk } from "@/redux/zabos/fetchZaboThunk";
 import { useAppSelector, useAppDispatch, type ZaboJson } from "@/types";
 import { Zabo } from "@/components/Zabo";
@@ -9,12 +9,14 @@ import { Background } from "@/components/Background";
 import { Qr } from "@/components/Qr";
 import { Logo } from "@/components/Logo";
 import { TRANSITION_INTERVAL } from "@/config";
+import { type RootState } from "@/redux/store";
+
 import style from "./Board.module.scss";
 
 export const Board = () => {
-  const zaboList = useAppSelector((state: ZaboListState) => state.zaboList);
+  const zaboList = useAppSelector((state: RootState) => state.zabo.zaboList);
   const leftOverZaboLength = useAppSelector(
-    (state: ZaboListState) => state.leftoverLength,
+    (state: RootState) => state.zabo.leftoverLength,
   );
 
   const dispatch = useAppDispatch();
