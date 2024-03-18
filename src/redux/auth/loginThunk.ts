@@ -6,8 +6,6 @@ import { setIsLoggedIn, setErrorMessage } from "./authSlice";
 export const loginThunk =
   (deviceId: string, pin: string) => async (dispatch: AppDispatch) => {
     // request zabo board login and get response
-    console.log(deviceId);
-    console.log(pin);
 
     // mock api request time
     const response = await axios.post(`/api/board/login`, {
