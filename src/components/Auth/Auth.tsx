@@ -13,6 +13,10 @@ export const AuthPage = () => {
     (state: RootState) => state.auth.isLoggedIn,
   );
 
+  const errorMessage = useAppSelector(
+    (state: RootState) => state.auth.errorMessage,
+  );
+
   const onDeviceIdChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDeviceId(e.target.value);
   };
@@ -71,6 +75,7 @@ export const AuthPage = () => {
         >
           Submit
         </button>
+        <div className={style.errorBox}>{errorMessage}</div>
       </div>
     </div>
   );

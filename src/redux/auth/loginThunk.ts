@@ -1,6 +1,6 @@
 import { type AppDispatch } from "@/redux/store";
 import axios from "axios";
-import { setIsLoggedIn } from "./authSlice";
+import { setIsLoggedIn, setErrorMessage } from "./authSlice";
 
 // send device id and pin to server and get session cookie
 export const loginThunk =
@@ -22,5 +22,7 @@ export const loginThunk =
     // if success, then set zabo store's isLogin to true
     if (isLoginSuccess) {
       dispatch(setIsLoggedIn(true));
+    } else {
+      dispatch(setErrorMessage(response.data.error));
     }
   };
