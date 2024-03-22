@@ -12,8 +12,6 @@ export const loginThunk =
       name: deviceId,
       password: pin,
     });
-    // TODO
-    // add api request to login
 
     const isLoginSuccess = response.data.success;
 
