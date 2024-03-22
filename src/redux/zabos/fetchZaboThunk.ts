@@ -21,15 +21,15 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   // important thing is that, we have to set lastSeen params to get zabos after lastSeen
   // so we can not do 5 requests in parallel. it should be sequential
   let zabosData: ZaboJson[] = [];
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 1; i += 1) {
     const lastFetched =
       zabosData.length > 0 ? zabosData[zabosData.length - 1].id : null;
 
     // fetch zabos based on lastSeen(lastFetched)
     const { data } =
       lastFetched === null
-        ? await axios.get("/api/zabo/list")
-        : await axios.get("/api/zabo/list", {
+        ? await axios.get("/api/board/list")
+        : await axios.get("/api/board/list", {
             params: {
               lastSeen: lastFetched,
             },
