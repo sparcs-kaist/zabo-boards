@@ -78,7 +78,9 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   }
 
   // we have to remove zabos that have no image url
-  zabosData = zabosData.filter((zabo: ZaboJson) => zabo.imageUrl !== null);
+  zabosData = zabosData.filter(
+    (zabo: ZaboJson) => zabo.imageUrl !== null && zabo.showBoard !== false,
+  );
   console.log(zabosData);
 
   dispatch(pushZabos(zabosData));
