@@ -9,6 +9,7 @@ export type ZaboJson = {
   scheduleDate: string | null;
   qrUrl: string;
   imageUrl: string;
+  showBoard: boolean;
   state: ZaboState;
   score: number;
   views: number;
