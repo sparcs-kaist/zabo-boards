@@ -3,10 +3,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY ./dist/ /app/
+COPY . .
 
-RUN npm install --global serve
+RUN yarn
+
+RUN yarn build
+
+RUN yarn global add serve
 
 EXPOSE 80
 
-ENTRYPOINT ["serve", "-l", "80", "/app"]
+ENTRYPOINT ["serve", "-l", "80", "/app/dist"]

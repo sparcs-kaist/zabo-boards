@@ -9,4 +9,6 @@ services:
     labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]
   zabo-boards:
     image: ghcr.io/sparcs-kaist/zabo-boards:latest
+    ports:
+      - 8888:80
     labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]

@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "prod": "docker compose -p zabo-boards -f .docker/docker-compose.yaml",
+    "prod:up": "yarn prod up",
+    "prod:down": "yarn prod down",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier --write --config .prettierrc -u",
