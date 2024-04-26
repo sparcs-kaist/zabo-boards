@@ -3,6 +3,8 @@
 
 ### Node ###
 # Logs
+.idea
+.uuid
 logs
 *.log
 npm-debug.log*

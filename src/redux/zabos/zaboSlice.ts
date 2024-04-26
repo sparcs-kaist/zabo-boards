@@ -1,5 +1,6 @@
 import { type ZaboJson, ZaboState } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
+import { INIT_CONTENT1, INIT_CONTENT2 } from "@/config";
 
 export interface ZaboListState {
   zaboList: ZaboJson[];
@@ -9,15 +10,14 @@ export interface ZaboListState {
 const initialState: ZaboListState = {
   zaboList: [
     {
-      id: "0000000000000",
-      title: "ZABO BOARD 2023 LAUNCHING",
+      id: "INIT CONTENT 1",
+      title: "ZABO BOARDS",
       owner: "SPARCS",
-      description: "HELLO WORLD",
+      description: "INIT CONTENT 1",
       scheduleType: null,
       scheduleDate: null,
-      qrUrl: "https://zabo.sparcs.org/s/86f104",
-      imageUrl:
-        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
+      qrUrl: "https://zabo.sparcs.org",
+      imageUrl: INIT_CONTENT1,
       state: ZaboState.CURRENT_STATE,
       score: 0,
       views: 0,
@@ -25,15 +25,14 @@ const initialState: ZaboListState = {
       likes: 0,
     },
     {
-      id: "11111111111",
-      title: "ZABO BOARD 2023 LAUNCHING",
+      id: "INIT CONTENT 2",
+      title: "ZABO BOARDS",
       owner: "SPARCS",
-      description: "HELLO WORLD",
+      description: "INIT CONTENT 2",
       scheduleType: null,
       scheduleDate: null,
-      qrUrl: "https://zabo.sparcs.org/s/86f104",
-      imageUrl:
-        "https://sparcs-kaist-zabo-prod.s3.ap-northeast-2.amazonaws.com/zabo/zabo-136421683085229471?a=1sdf23tg",
+      qrUrl: "https://zabo.sparcs.org",
+      imageUrl: INIT_CONTENT2,
       state: ZaboState.BEFORE_STATE,
       score: 0,
       views: 0,

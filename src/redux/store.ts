@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { zaboReducer } from "./zabos/zaboSlice";
+import { rootReducer } from "./rootReducer";
 
 export const store = configureStore({
-  reducer: zaboReducer,
+  reducer: rootReducer,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
