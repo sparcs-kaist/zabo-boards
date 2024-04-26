@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  watch-tower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --scope zabo-boards
+    labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]
+  zabo-boards:
+    image: ghcr.io/sparcs-kaist/zabo-boards:latest
+    labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]
