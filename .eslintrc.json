@@ -102,7 +102,10 @@
         "prefer": "type-imports"
       }
     ],
-    "arrow-body-style": ["warn"]
+    "arrow-body-style": ["warn"],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "some": [ "nesting", "id" ]
+    }]
   },
   "settings": {
     "import/parsers": {
