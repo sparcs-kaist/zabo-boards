@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "prod": "docker compose -p zabo-boards -f .docker/docker-compose.yaml",
+    "prod": "docker compose -p zabo-boards -f .docker/docker-compose.yaml --env-file .docker/.env.production",
     "prod:up": "yarn prod up",
     "prod:down": "yarn prod down",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
