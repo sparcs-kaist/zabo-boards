@@ -33,6 +33,8 @@
   "plugins": ["import", "@typescript-eslint", "react"],
   "ignorePatterns": ["node_modules/", "dist/"],
   "rules": {
+    "no-await-in-loop": "off",
+    "no-console": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -55,7 +57,7 @@
       {
         "props": true,
         // function parameters cannot be reassigned for readability, except for the ones in the array
-        "ignorePropertyModificationsFor": []
+        "ignorePropertyModificationsFor": ["state"]
       }
     ],
     "no-restricted-imports": [
@@ -99,7 +101,11 @@
       {
         "prefer": "type-imports"
       }
-    ]
+    ],
+    "arrow-body-style": ["warn"],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "some": [ "nesting", "id" ]
+    }]
   },
   "settings": {
     "import/parsers": {

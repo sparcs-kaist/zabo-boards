@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
     },
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false, //do not allow import of js files
@@ -24,7 +24,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["src", "vite.config.ts" ],
   "references": [
     {
       "path": "./tsconfig.node.json"
