@@ -23,6 +23,7 @@ const initialState: ZaboListState = {
       views: 0,
       effectiveViews: 0,
       likes: 0,
+      showBoard: true,
     },
     {
       id: "INIT CONTENT 2",
@@ -38,6 +39,7 @@ const initialState: ZaboListState = {
       views: 0,
       effectiveViews: 0,
       likes: 0,
+      showBoard: true,
     },
   ],
   leftoverLength: 0,
