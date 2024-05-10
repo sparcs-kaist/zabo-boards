@@ -36,7 +36,7 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
   // add state field
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const parsedZabos = data.map((zabo: any, index: number) => {
-    const { title, description, likesCount, views, score, effectiveViews } =
+    const { title, description, likesCount, views, score, effectiveViews, showBoard } =
       zabo;
     /* eslint-disable-next-line no-underscore-dangle */
     const id = zabo._id;
@@ -67,6 +67,7 @@ export const fetchZaboThunk = () => async (dispatch: AppDispatch) => {
       views,
       score,
       effectiveViews,
+      showBoard
     };
   });
 
