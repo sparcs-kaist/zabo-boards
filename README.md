@@ -1,27 +1,51 @@
-# React + TypeScript + Vite
+# Zabo Boards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
+Zabo Boards helps **KAIST students based** individuals or clubs advertising themselves via TV screen in open space.
+While this service is open for public, **only approved groups** are able to post images.
+Please submit your request in order to create a new group via our website.
 
-Currently, two official plugins are available:
+This project is being maintained by [SPARCS KAIST](https://github.com/sparcs-kaist)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+We're expecting our users post there recruiting announcements, performance schedules, and any other events advertisments.
+However, there's no strict restrictions on contents that users upload.
 
-## Expanding the ESLint configuration
+Please contact us to get more detailed information.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+If you're looking for backend codes, you can find it in [here](https://github.com/sparcs-kaist/zabo-server-nodejs)
 
-- Configure the top-level `parserOptions` property like this:
+## Table of Contents
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Prerequisites
+
+**You'll need to have Node 18.18.2 in local development and production machine**
+
+You can use [fnm](https://github.com/Schniz/fnm). That's all you need.
+
+```shell
+$ node -v // v18.18.2
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Getting Started
+
+### Running Development Server
+
+Run server
+```shell
+$ cp .env.example .env.development // copy config 
+
+$ vim .env.development // setup configuration
+
+$ yarn // Installing dependencies
+
+$ yarn dev // used vite for project configuration. yarn dev will run vite development server
+```
+
+### Running Production Server
+```shell
+$ // check if there is a zabo-boards package in sparcs-kaist organization
+$ git clone https://github.com/sparcs-kaist/zabo-boards.git // clone repo
+$ cp .env.example .env.production // copy config 
+$ docker compose -p zabo-boards -f .docker/docker-compose.yaml up -d // run zabo boards server
+
+```
