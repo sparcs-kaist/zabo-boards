@@ -5,7 +5,7 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --scope zabo-boards --cleanup --enable-lifecycle-hooks zabo-boards
+    command: --interval 30 --scope zabo-boards --cleanup --enable-lifecycle-hooks
     labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]
   zabo-boards:
     image: ghcr.io/sparcs-kaist/zabo-boards:latest
