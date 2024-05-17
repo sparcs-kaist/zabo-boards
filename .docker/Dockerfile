@@ -13,6 +13,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+RUN apk add --no-cache curl
+
 COPY --from=builder /app/dist /app
 
 RUN yarn global add serve
