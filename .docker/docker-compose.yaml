@@ -13,5 +13,5 @@ services:
       - "8888:80"
     labels:
     - "com.centurylinklabs.watchtower.scope=zabo-boards"
-    - 'com.centurylinklabs.watchtower.lifecycle.pre-update=curl -X POST -H ''Content-type: application/json'' --data ''{"text":"[PROD] 업데이트를 위해 zabo-front 서비스를 종료시켰습니다."}'' ${SLACK_WATCHTOWER_WEBHOOK}'
+    - 'com.centurylinklabs.watchtower.lifecycle.pre-update=curl -X POST -H ''Content-type: application/json'' --data ''{"text":"[PROD] 업데이트를 위해 zabo-boards 서비스를 종료시켰습니다."}'' ${SLACK_WATCHTOWER_WEBHOOK}'
     - 'com.centurylinklabs.watchtower.lifecycle.post-update=curl -X POST -H ''Content-type: application/json'' --data ''{"text":"[PROD] 업데이트 후 zabo-boards 서비스를 재시작하였습니다."}'' ${SLACK_WATCHTOWER_WEBHOOK}'
