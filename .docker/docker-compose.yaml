@@ -5,12 +5,12 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --scope zabo-boards --cleanup
+    command: --interval 30 --scope zabo-boards --cleanup --enable-lifecycle-hooks
     labels: [ "com.centurylinklabs.watchtower.scope=zabo-boards" ]
   zabo-boards:
     image: ghcr.io/sparcs-kaist/zabo-boards:latest
     ports:
-      - "8888:80"
+      - "15090:80"
     labels:
     - "com.centurylinklabs.watchtower.scope=zabo-boards"
     - 'com.centurylinklabs.watchtower.lifecycle.pre-update=curl -X POST -H ''Content-type: application/json'' --data ''{"text":"[PROD] 업데이트를 위해 zabo-boards 서비스를 종료시켰습니다."}'' ${SLACK_WATCHTOWER_WEBHOOK}'
